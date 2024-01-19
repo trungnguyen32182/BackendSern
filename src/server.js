@@ -2,7 +2,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import configViewEngine from './config/viewEngine.js'
 import initWebRoutes from './route/web.js'
-import {} from 'dotenv/config'
+import initAPIRoutes from './route/api.js'
+import { } from 'dotenv/config'
+import connectDB from './config/connectDB.js'
 
 
 
@@ -18,6 +20,8 @@ configViewEngine(app)
 
 // routes
 initWebRoutes(app)
+initAPIRoutes(app)
+connectDB()
 
 
-app.listen(port,() => console.log(`the gateway is connected on port http://${host}:${port}`))
+app.listen(port, () => console.log(`the gateway is connected on port http://${host}:${port}`))

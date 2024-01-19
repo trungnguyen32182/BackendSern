@@ -1,9 +1,25 @@
 import express from 'express'
+import {
+    getHomePage,
+    getCrud,
+    postCrud,
+    displayGetCrud,
+    getEditCrud,
+    putEditCrud,
+    getDeleteCrud
+} from '../controllers/homeController.js'
 
-const router = express.Router()
+let router = express.Router();
 
 const initWebRoutes = (app) => {
-    return app.use('/', router)
+    router.get('/', getHomePage);
+    router.get('/crud', getCrud);
+    router.post('/post-crud', postCrud);
+    router.get('/get-crud', displayGetCrud);
+    router.get('/edit-crud', getEditCrud);
+    router.get('/delete-crud', getDeleteCrud);
+    router.post('/put-crud', putEditCrud);
+    return app.use('/', router);
 }
 
-export default initWebRoutes
+export default initWebRoutes;

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display user</title>
+    <style>
+        #users {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #users td,
+        #users th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #users tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #users tr:hover {
+            background-color: #ddd;
+        }
+
+        #users th {
+            padding-top: 1.4rem;
+            padding-bottom: 1.4rem;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .wrap-button {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 4px 6px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #04AA6D;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {
+            background-color: #3e8e41
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .button1 {
+            background-color: #4bbeff;
+        }
+
+        .button2 {
+            background-color: #e91e63;
+        }
+
+        .button1:hover,
+        .button1:active {
+            background-color: #008CBA
+        }
+
+        .button2:hover,
+        .button2:active {
+            background-color: #ce1a57;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="users" style="width: 100%;">
+        <tr>
+            <th>
+                email
+            </th>
+            <th>
+                firstName
+            </th>
+            <th>
+                lastName
+            </th>
+            <th>
+                address
+            </th>
+            <th>
+                action
+            </th>
+        </tr>
+        <% for(var i=0; i < data.length; i++) { %>
+            <tr>
+                <td>
+                    <%= data[i].email %>
+                </td>
+                <td>
+                    <%= data[i].firstName %>
+                </td>
+                <td>
+                    <%= data[i].lastName %>
+                </td>
+                <td>
+                    <%= data[i].address %>
+                </td>
+                <td>
+                    <div class="wrap-button">
+                        <a href="/edit-crud?id=<%= data[i].id %>" class='button button1' type="button">Edit</a>
+                        <a href="/delete-crud?id=<%= data[i].id %>" class='button button2' type="button">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>
